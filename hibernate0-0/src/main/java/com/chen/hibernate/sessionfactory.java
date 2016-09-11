@@ -1,11 +1,9 @@
 package com.chen.hibernate;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.List;
 
-import com.chen.hibernate.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -18,11 +16,6 @@ public class sessionfactory {
 	private static SessionFactory sessionFactory = null;
 	@Test
 	public void setUp() throws Exception {
-		/*File f = new File(
-				"/home/chen/git/project/hibernate/hibernate0-0/target/classes/hibernate.cfg.xml");
-		if(!f.exists()){
-			return;
-		}*/
 		System.out.println(sessionfactory.class.getClassLoader().getResource("").getPath());
 		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
 				//.configure(f)
