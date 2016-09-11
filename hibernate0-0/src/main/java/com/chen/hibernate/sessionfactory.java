@@ -12,16 +12,17 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.junit.Test;
 
 public class sessionfactory {
 	private static SessionFactory sessionFactory = null;
-
+	@Test
 	public void setUp() throws Exception {
-		File f = new File(
+		/*File f = new File(
 				"/home/chen/git/project/hibernate/hibernate0-0/target/classes/hibernate.cfg.xml");
 		if(!f.exists()){
 			return;
-		}
+		}*/
 		System.out.println(sessionfactory.class.getClassLoader().getResource("").getPath());
 		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
 				//.configure(f)
@@ -46,9 +47,10 @@ public class sessionfactory {
 			List<Employee> Employees = s.createQuery("from Employee").getResultList();
 			for(Iterator<Employee> itor = Employees.iterator() ; itor.hasNext();){
 				Employee e = (Employee)itor.next();
-				System.out.println("First name: " + e.getFirstName());
-				System.out.println("Last name: " + e.getLastName());
-				System.out.println("salary : " + e.getSalary());
+				System.out.print("First name: " + e.getFirstName());
+				System.out.print("Last name: " + e.getLastName());
+				System.out.print("salary : " + e.getSalary());
+				System.out.println();
 			}
 			tx.commit();
 		}catch (Exception e) {
@@ -119,7 +121,6 @@ public class sessionfactory {
 			s.close();
 		}
 	}
-	
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		sessionfactory s = new sessionfactory();
