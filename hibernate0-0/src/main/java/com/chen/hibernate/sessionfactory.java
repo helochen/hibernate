@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.List;
 
+import com.chen.hibernate.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -17,13 +18,15 @@ public class sessionfactory {
 
 	public void setUp() throws Exception {
 		File f = new File(
-				"/home/chen/git/project/hibernate/hibernate0-0/src/main/java/com/chen/hibernate/hibernate.cfg.xml");
+				"/home/chen/git/project/hibernate/hibernate0-0/target/classes/hibernate.cfg.xml");
 		if(!f.exists()){
 			return;
 		}
+		System.out.println(sessionfactory.class.getClassLoader().getResource("").getPath());
 		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-				.configure(f).build();
-
+				//.configure(f)
+				.configure()
+				.build();
 		try {
 			sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
 		} catch (Exception e) {
@@ -41,15 +44,13 @@ public class sessionfactory {
 		try{
 			tx = s.beginTransaction();
 			List<Employee> Employees = s.createQuery("from Employee").getResultList();
-			for(Iterator itor = Employees.iterator() ; itor.hasNext();){
+			for(Iterator<Employee> itor = Employees.iterator() ; itor.hasNext();){
 				Employee e = (Employee)itor.next();
 				System.out.println("First name: " + e.getFirstName());
 				System.out.println("Last name: " + e.getLastName());
 				System.out.println("salary : " + e.getSalary());
 			}
 			tx.commit();
-		
-		
 		}catch (Exception e) {
 			// TODO: handle exception
 			if(tx!=null) tx.rollback();
