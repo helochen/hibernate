@@ -20,5 +20,16 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.2.2.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>6.0.3</version>
+		</dependency>
 	</dependencies>
+	<!-- <build> <plugins> <plugin> <artifactId>maven-resources-plugin</artifactId> 
+		<version>2.5</version> <executions> <execution> <id>copy-resources</id> <phase>validate</phase> 
+		<goals> <goal>copy-resources</goal> </goals> <configuration> <outputDirectory>target/classes/com/chen/hibernate</outputDirectory> 
+		<resources> <resource> <directory>src/main/java/com/chen/hibernate</directory> 
+		<filtering>true</filtering> </resource> </resources> </configuration> </execution> 
+		</executions> </plugin> </plugins> </build> -->
 </project>
