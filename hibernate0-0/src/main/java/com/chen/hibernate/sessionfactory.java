@@ -4,6 +4,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.jboss.jandex.Main;
 
 public class sessionfactory {
 	private static SessionFactory sessionFactory = null;
@@ -17,5 +18,18 @@ public class sessionfactory {
 		}catch(Exception e){
 			StandardServiceRegistryBuilder.destroy(registry);
 		}
+	}
+	
+	
+	public static void main(String[] args) {
+		
+		sessionfactory s = new sessionfactory();
+		try {
+			s.setUp();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }
