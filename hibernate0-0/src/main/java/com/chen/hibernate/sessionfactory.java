@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.List;
 
+import com.chen.hibernate.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
