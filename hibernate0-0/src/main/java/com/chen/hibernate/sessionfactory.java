@@ -4,7 +4,11 @@ import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.persistence.Persistence;
+
 import com.chen.hibernate.Employee;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -19,7 +23,6 @@ public class sessionfactory {
 
 	@Test
 	public void setUp() throws Exception {
-		System.out.println(sessionfactory.class.getClassLoader().getResource("").getPath());
 		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
 				// .configure(f)
 				.configure().build();
@@ -138,6 +141,17 @@ public class sessionfactory {
 		}
 	}
 
+	public void createCriteria(){
+		Session s = sessionFactory.openSession();
+		Transaction tx = null;
+		try{
+			tx = s.beginTransaction();
+			Criteria cr = s.createCriteria(Employee.class);
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
 	public static void main(String[] args) throws FileNotFoundException {
 		sessionfactory s = new sessionfactory();
 		try {
