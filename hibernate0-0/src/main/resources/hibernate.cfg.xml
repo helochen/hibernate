@@ -19,6 +19,7 @@
 			111111
 		</property>
 		<property name="hibernate.show_sql">true</property>
-		<mapping resource="Employee.hbm.xml"/>
+		<property name="hbm2ddl.auto">create</property>  
+		<!-- <mapping resource="Employee.hbm.xml"/> -->
 	</session-factory>
 </hibernate-configuration>
