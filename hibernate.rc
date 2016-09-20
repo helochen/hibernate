@@ -1,0 +1,8 @@
+#Hibernate直接通过属性访问与JavaBean方法访问XML配置：
+	1）<property name="xxx" access="field">
+		<cplumn name="XXX" not-null="true"/>	
+	   </property>
+	2) <property name="xxx" column="XXX"/>
+#设置派生属性
+	1) 通过配置文件不映射该属性，而通过逻辑运算
+	2) <property name="totalPrice" formula="(select sum(o.PRICE) from CUSTOMERS o where o.CUSTOMER_ID=ID)"/>
