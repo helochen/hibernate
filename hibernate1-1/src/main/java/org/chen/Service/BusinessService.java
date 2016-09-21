@@ -94,7 +94,25 @@ public class BusinessService {
 		}
 		return ls;
 	}
-
+	public Customer findCustomerByID(long id){
+		Session s = s_factory.openSession();
+		Transaction tx = null;
+		Customer c = null;
+		try {
+			tx = s.beginTransaction();
+			c = s.get(Customer.class, id);
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if(tx!=null)
+				tx.rollback();
+			// TODO: handle exception
+		}finally {
+			s.close();
+			// TODO: handle finally clause
+		}
+		return c;
+	}
 	/*
 	 * test 函数
 	 */

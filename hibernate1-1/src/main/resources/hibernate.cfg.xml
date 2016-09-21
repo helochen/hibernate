@@ -19,8 +19,9 @@
 			111111
 		</property>
 		<property name="hibernate.show_sql">true</property>
-		<property name="hbm2ddl.auto">create</property>  
+		<property name="hbm2ddl.auto">update</property>  
 		
 		<mapping resource="Customer.hbm.xml"/>
+		<mapping resource="Order.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

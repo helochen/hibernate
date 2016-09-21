@@ -13,3 +13,12 @@ create table CUSTOMERS(
 	BIRTHDAY date,
 	REGISTERED_TIME timestamp
 );
+
+---ORDERS
+create table ORDERS(
+	ID bigint not null primary key,
+	ORDER_NUMBER varchar(15),
+	CUSTOMER_ID bigint not null
+);
+
+---RELATION
