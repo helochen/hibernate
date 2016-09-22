@@ -2,13 +2,14 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 <hibernate-mapping>
 	<class entity-name="org.chen.Entity.Order" table="ORDERS">
-		<id name="id" column="ID" type="long">
+		<id name="id" type="long" column="ID">
 			<generator class="increment"></generator>
 		</id>
 		<property name="orderNumber" type="string">
 			<column name="ORDER_NUMBER" length="15"></column>
 		</property>
 		<many-to-one name="customer" column="CUSTOMER_ID"
-			class="org.chen.Entity.Customer" not-null="true" lazy="false"></many-to-one>
+			class="org.chen.Entity.Customer" not-null="true" lazy="false">
+		</many-to-one>
 	</class>
 </hibernate-mapping>

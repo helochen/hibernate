@@ -3,6 +3,7 @@ package org.chen.hibernate1_1;
 import java.util.List;
 
 import org.chen.Entity.Customer;
+import org.chen.Entity.Order1;
 import org.chen.Service.BusinessService;
 import org.chen.Service.OrderAndCustomerService;
 import org.hibernate.SessionFactory;
@@ -19,7 +20,10 @@ public class App {
 	static {
 		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
 		try {
-			sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+			sessionFactory = new MetadataSources(registry)
+					.addAnnotatedClass(Order1.class)
+					.buildMetadata()
+					.buildSessionFactory();
 		} catch (Exception e) {
 			StandardServiceRegistryBuilder.destroy(registry);
 			e.printStackTrace();
@@ -36,7 +40,7 @@ public class App {
 			} else {
 				System.out.println("Hello Hibernate!");
 				BusinessService service = new BusinessService(sessionFactory);
-				service.test();
+				//service.test();
 				Customer c = service.findCustomerByID(1);
 				if (c != null) {
 					OrderAndCustomerService s = new OrderAndCustomerService(sessionFactory);
@@ -47,6 +51,7 @@ public class App {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			
 		} finally {
 			if (sessionFactory != null) {
 				sessionFactory.close();

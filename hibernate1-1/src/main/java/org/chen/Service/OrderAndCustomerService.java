@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.chen.Entity.Customer;
-import org.chen.Entity.Order;
+import org.chen.Entity.Order1;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -19,9 +19,9 @@ public class OrderAndCustomerService {
 		this.s_factory = s_factory;
 	}
 
-	public void printOrders(List orders) {
+	public void printOrders(List<?> orders) {
 		for (Iterator<?> itor = orders.iterator(); itor.hasNext();) {
-			Order o = (Order) itor.next();
+			Order1 o = (Order1) itor.next();
 			System.out.println(o.getOrderNumber());
 			System.out.println(o.getCustomer().getName());
 			System.err.println(o.getId());
@@ -33,14 +33,14 @@ public class OrderAndCustomerService {
 		Transaction tx = null;
 		try {
 			tx = s.beginTransaction();
-			Order o = new Order();
+			Order1 o = new Order1();
 			o.setOrderNumber("very much");
 			o.setCustomer(c);
-			Order o1 = new Order();
+			Order1 o1 = new Order1();
 			o1.setOrderNumber("very litter");
 			o1.setCustomer(c);
-			s.saveOrUpdate(o);
-			s.saveOrUpdate(o1);
+			s.save(o);
+			s.save(o1);
 			tx.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -55,10 +55,10 @@ public class OrderAndCustomerService {
 	public List<?> findOrdersByCustomer(Customer c) {
 		Session s = s_factory.openSession();
 		Transaction tx = null;
-		List<Order> ls = null;
+		List<Order1> ls = null;
 		try {
 			tx = s.beginTransaction();
-			Query<Order> q = s.createQuery("from Order t where t.customer.id = :a", Order.class);
+			Query<Order1> q = s.createQuery("from Order1 t where t.customer.id = :a", Order1.class);
 			q.setParameter("a", c.getId());
 			ls = q.getResultList();
 			tx.commit();
