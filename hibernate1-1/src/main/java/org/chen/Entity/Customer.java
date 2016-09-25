@@ -3,6 +3,8 @@ package org.chen.Entity;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Customer implements Serializable{
 	private Long id;
@@ -18,6 +20,16 @@ public class Customer implements Serializable{
 	private Date	birthday;
 	private Timestamp registeredTime;
 	
+	private Set<Order1> orders = new HashSet<Order1>();
+	
+	public Set<Order1> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<Order1> orders) {
+		this.orders = orders;
+	}
+
 	public String getEmail() {
 		return email;
 	}

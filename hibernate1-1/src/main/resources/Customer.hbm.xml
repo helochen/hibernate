@@ -18,5 +18,10 @@
 		<property name="image" column="IMAGE" type="binary"></property>
 		<property name="birthday" column="BIRTHDAY" type="date"></property>
 		<property name="registeredTime" column="REGISTERED_TIME" type="timestamp"></property>
+		
+		<set name="orders" cascade="save-update" lazy="false">
+			<key column="CUSTOMER_ID"/>
+			<one-to-many class="org.chen.Entity.Order1"/>
+		</set>
 	</class>
 </hibernate-mapping>

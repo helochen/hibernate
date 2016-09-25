@@ -1,6 +1,8 @@
 package org.chen.hibernate1_1;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.chen.Entity.Customer;
 import org.chen.Entity.Order1;
@@ -47,6 +49,14 @@ public class App {
 					s.saveOrdersByCustomer(c);
 					List<?> ls = s.findOrdersByCustomer(c);
 					s.printOrders(ls);
+					
+					Set sets = c.getOrders();
+					for( Iterator it = sets.iterator() ; it.hasNext(); ){
+						Order1 o = (Order1) it.next();
+						System.out.println(o.getOrderNumber());
+						System.out.println(o.getCustomer().getName());
+						System.err.println(o.getId());
+					}
 				}
 			}
 		} catch (Exception e) {
